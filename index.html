@@ -15,22 +15,52 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a2e;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 60px 20px;
+            position: relative;
+            z-index: 2;
         }
         
         .card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             text-align: center;
+            animation: fadeInUp 1s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         h1 {
@@ -39,12 +69,20 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
         }
         
         .tagline {
             font-size: 1.3em;
             color: #666;
             margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
         }
         
         .intro {
@@ -55,6 +93,12 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.7s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
         
         .divider {
@@ -62,6 +106,12 @@
             height: 3px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 40px auto;
+            animation: expand 1s ease-out 1s both;
+        }
+        
+        @keyframes expand {
+            from { width: 0; }
+            to { width: 60px; }
         }
         
         .cta {
@@ -69,6 +119,8 @@
             border-radius: 15px;
             padding: 30px;
             margin-top: 40px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.2s forwards;
         }
         
         .cta h2 {
@@ -90,11 +142,12 @@
             border-radius: 50px;
             font-size: 16px;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
         }
         
         input[type="email"]:focus {
             border-color: #667eea;
+            transform: scale(1.02);
         }
         
         button {
@@ -105,17 +158,35 @@
             border-radius: 50px;
             font-size: 16px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         
         button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
+        }
+        
+        button:active {
+            transform: translateY(0) scale(0.98);
         }
         
         .footer {
             margin-top: 40px;
             color: #999;
             font-size: 0.9em;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #764ba2;
         }
         
         @media (max-width: 600px) {
@@ -127,6 +198,8 @@
     </style>
 </head>
 <body>
+    <canvas id="particles-canvas"></canvas>
+    
     <div class="container">
         <div class="card">
             <h1>Psiloconvalley</h1>
@@ -151,13 +224,117 @@
                 </form>
             </div>
             
-          <div class="footer">
-    <p>Psiloconvalley © 2025</p>
-    <p style="margin-top: 10px;">
-        <a href="/insects.html" style="color: #667eea; text-decoration: none;">Read: The Insect Vision</a>
-    </p>
-</div>
+            <div class="footer">
+                <p>Psiloconvalley © 2025</p>
+                <p style="margin-top: 10px;">
+                    <a href="/insects.html">Read: The Insect Vision</a>
+                </p>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Particle system
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const particles = [];
+        const particleCount = 100;
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.color = `hsl(${Math.random() * 60 + 240}, 70%, 60%)`;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Mouse interaction
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    this.x -= dx * force * 0.03;
+                    this.y -= dy * force * 0.03;
+                }
+                
+                // Wrap around screen
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Create particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        // Mouse tracking
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // Animation loop
+        function animate() {
+            ctx.fillStyle = 'rgba(26, 26, 46, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            // Draw connections
+            particles.forEach((particle, i) => {
+                particles.slice(i + 1).forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(102, 126, 234, ${0.2 * (1 - distance / 100)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(otherParticle.x, otherParticle.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
