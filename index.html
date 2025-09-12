@@ -1,22 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Psiloconvalley</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psiloconvalley - Where Ancient Medicine Meets Modern Minds</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             text-align: center;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .intro {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 40px auto;
+        }
+        
+        .cta {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .cta h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 10px;
+            max-width: 400px;
+            margin: 20px auto 0;
+        }
+        
+        input[type="email"] {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="email"]:focus {
+            border-color: #667eea;
+        }
+        
+        button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .card { padding: 40px 20px; }
+            .email-form { flex-direction: column; }
+            button { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <h1>Psiloconvalley</h1>
-    <p>Where Ancient Medicine Meets Modern Minds</p>
-    <p>Integration support for consciousness explorers in tech</p>
-    <br>
-    <p>Coming 2025</p>
+    <div class="container">
+        <div class="card">
+            <h1>Psiloconvalley</h1>
+            <p class="tagline">Where Ancient Medicine Meets Modern Minds</p>
+            
+            <div class="intro">
+                <p>Bridging the wisdom of indigenous plant medicine with the innovation of Silicon Valley. Supporting consciousness explorers in tech through integration, community, and grounded guidance.</p>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <p class="intro">
+                Founded by a technologist with roots in Oaxacan medicine traditions, Psiloconvalley creates space for those navigating between worlds—the ancient and modern, the mystical and technical, the medicine and the machine.
+            </p>
+            
+            <div class="cta">
+                <h2>Coming 2025</h2>
+                <p>Join the journey as we build something new</p>
+                <form class="email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="email" name="email" placeholder="your@email.com" required>
+                    <button type="submit">Connect</button>
+                </form>
+            </div>
+            
+            <div class="footer">
+                <p>Psiloconvalley © 2025</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
