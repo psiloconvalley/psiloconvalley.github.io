@@ -22,6 +22,8 @@ navigation:
     url: /
   - title: Articles
     url: /articles/
+  - title: The Mycelium
+    url: /mycelium/
   - title: About
     url: /about/
   - title: Contact
