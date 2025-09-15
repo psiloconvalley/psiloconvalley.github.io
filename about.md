@@ -12,9 +12,9 @@ Our goal is to be a trusted source for tracking the signals of this emerging fut
 
 ## The Founder
 
-My name is [Your Name], and I started this project out of a deep curiosity about [mention your personal interest here - e.g., the future of human potential, how new ideas are formed, the surprising connections between ancient wisdom and modern tech].
+My name is David, and I started this project out of a deep curiosity about networks. All kind, even natural mycelium ones. 
 
-I have a background in [mention your skills briefly, e.g., C++ and scripting languages], and I believe that by applying a data-driven, analytical lens to these often "soft" topics, we can uncover powerful insights. This site is my experiment in building a tool, not just a publication, to help make sense of it all.
+I have a background in computer science and growing my own food, and I believe that by applying a data-driven, analytical lens to these often "soft" topics, we can uncover powerful insights. This site is my experiment in building a tool, not just a publication, to help make sense of it all.
 
 ## The Vision
 
