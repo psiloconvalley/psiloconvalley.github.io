@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-# Welcome to PsiloConValley
+# Welcome to Psiloconvalley
 
 Where consciousness meets innovation. We explore the intersection of expanded awareness, creative thinking, and technological progress.
 
@@ -17,6 +17,6 @@ Where consciousness meets innovation. We explore the intersection of expanded aw
 
 ---
 
-## About PsiloConValley
+## About Psiloconvalley
 
-PsiloConValley is a platform dedicated to exploring how expanded consciousness, creativity, and innovation intersect in our rapidly evolving world. We examine the role of psychedelics in technological development, the importance of mental flexibility in problem-solving, and the future of human potential.
+Psiloconvalley is a platform dedicated to exploring how expanded consciousness, creativity, and innovation intersect in our rapidly evolving world. We examine the role of psychedelics in technological development, the importance of mental flexibility in problem-solving, and the future of human potential.
