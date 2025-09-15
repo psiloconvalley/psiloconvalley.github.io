@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Welcome to PsiloConValley"
+title: "Welcome to Psiloconvalley"
 date: 2025-09-15
 author: "The PsiloConValley Team"
 tags: [introduction, consciousness, innovation]
 ---
 
-Welcome to PsiloConValley, where we explore the fascinating intersection of consciousness expansion and technological innovation.
+Welcome to Psiloconvalley, where we explore the fascinating intersection of consciousness expansion and technological innovation.
 
-## Why PsiloConValley?
+## Why Psiloconvalley?
 
 In Silicon Valley, we're told to "think different." But what if thinking differently requires more than just clever algorithms and venture capital? What if it requires fundamentally expanding how we perceive and process reality itself?
 
