@@ -2,7 +2,7 @@
 layout: post
 title: "Welcome to Psiloconvalley"
 date: 2025-09-15
-author: "The PsiloConValley Team"
+author: "The PsiloconValley Team"
 tags: [introduction, consciousness, innovation]
 ---
 
