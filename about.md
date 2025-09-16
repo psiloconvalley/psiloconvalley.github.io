@@ -21,8 +21,8 @@ permalink: /about/
 <div class="about-section dark">
   <div class="container narrow">
     <h2>The Founder</h2>
-    <p>My name is [Your Name], and I started this project out of a deep curiosity about [mention your personal interest here - e.g., the future of human potential, how new ideas are formed, the surprising connections between ancient wisdom and modern tech].</p>
-    <p>With a background in [mention your skills briefly, e.g., C++ and scripting languages], I believe that by applying a data-driven, analytical lens to these often "soft" topics, we can uncover powerful insights. This site is my experiment in building a tool, not just a publication, to help make sense of it all.</p>
+    <p>My name is David, and I started this project out of a deep curiosity about consciousness and everything nature related. The future of human potential, how new ideas are formed, the surprising connections between ancient wisdom and modern tech].</p>
+    <p>With a background in computers and my farming skills, I believe that by applying a data-driven, analytical lens to these often "soft" topics, we can uncover powerful insights. This site is my experiment in building a tool, not just a publication, to help make sense of it all.</p>
   </div>
 </div>
 
