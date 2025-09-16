@@ -480,4 +480,3 @@ Finally, let's add the CSS that makes this new layout beautiful.
 .about-section p a:hover {
   border-bottom-color: var(--primary-color);
 }
-```
