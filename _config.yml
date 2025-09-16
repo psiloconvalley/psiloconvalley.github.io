@@ -20,14 +20,14 @@ collections:
 navigation:
   - title: Home
     url: /
-  - title: Articles
-    url: /articles/
   - title: The Mycelium
     url: /mycelium/
+  - title: Declassifier   # <-- ADD THIS
+    url: /declassifier/ # <-- AND THIS
+  - title: Articles
+    url: /articles/
   - title: About
     url: /about/
-  - title: Contact
-    url: /contact/
 
 # Social
 twitter: psiloconvalley
