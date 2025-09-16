@@ -225,3 +225,21 @@ body {
 .post-preview h3 a {
   font-size: 1.25rem;
 }
+
+
+
+
+/* --- Upgraded Footer --- */
+.footer-links {
+  margin-bottom: 0.5rem;
+}
+.footer-links a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+.site-footer p {
+  font-size: 0.9rem;
+}
