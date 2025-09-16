@@ -1,28 +1,24 @@
+// --- Interactive Spore Field Sketch (High Contrast Version) ---
 document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('mycelium-visual');
+  if (!container) return;
 
-  // This wrapper tells the script to wait until the whole page is loaded before running.
-  // This solves the "Aborted" error and race condition.
-
-  // --- p5.js sketch for the generative mycelium network ---
-
-  let particles = [];
-  const numParticles = window.innerWidth > 768 ? 100 : 40;
-  const connectDistance = 120;
-  
-  // We define p5.js in "instance mode" to make it work inside the wrapper.
   const sketch = (p) => {
-    
-    p.setup = function() {
-      let canvas = p.createCanvas(p.windowWidth, 400);
-      canvas.parent('mycelium-visual'); // Attach to our div
+    let particles = [];
+    const numParticles = window.innerWidth > 768 ? 150 : 70;
+    const connectDistance = 120;
+    const connectDistanceMouse = 150; // A larger radius for the mouse
 
+    p.setup = function() {
+      let canvas = p.createCanvas(container.offsetWidth, 400);
+      canvas.parent(container);
       for (let i = 0; i < numParticles; i++) {
         particles.push(new Particle(p));
       }
     };
 
     p.draw = function() {
-      p.clear(); // Use clear() for a transparent background
+      p.background(30, 30, 35); // A nice dark background for contrast
 
       for (let particle of particles) {
         particle.update();
@@ -30,57 +26,49 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       for (let i = 0; i < particles.length; i++) {
+        let p1 = particles[i];
+        
+        let dMouse = p.dist(p1.pos.x, p1.pos.y, p.mouseX, p.mouseY);
+        if (dMouse < connectDistanceMouse) {
+          p.stroke(255, 255, 255, p.map(dMouse, 0, connectDistanceMouse, 120, 0));
+          p.strokeWeight(1.5);
+          p.line(p1.pos.x, p1.pos.y, p.mouseX, p.mouseY);
+        }
+
         for (let j = i + 1; j < particles.length; j++) {
-          let p1 = particles[i];
           let p2 = particles[j];
-          let d = p.dist(p1.x, p1.y, p2.x, p2.y);
+          let d = p.dist(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
 
           if (d < connectDistance) {
-            let alpha = p.map(d, 0, connectDistance, 200, 0);
-            let weight = p.map(d, 0, connectDistance, 1.5, 0.5);
-            p.stroke(190, 190, 190, alpha);
-            p.strokeWeight(weight);
-            p.line(p1.x, p1.y, p2.x, p2.y);
+            p.stroke(100, 100, 100, p.map(d, 0, connectDistance, 50, 0));
+            p.strokeWeight(0.5);
+            p.line(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
           }
         }
       }
     };
-
+    
     p.windowResized = function() {
-      p.resizeCanvas(p.windowWidth, 400);
+        p.resizeCanvas(container.offsetWidth, 400);
     };
   };
+  new p5(sketch);
 
-  new p5(sketch); // Create a new p5 instance with our sketch, which starts the animation.
-
-  // --- Particle Class ---
   class Particle {
     constructor(p) {
-      this.p = p; // Store the p5 instance to access its functions
-      this.x = this.p.random(this.p.width);
-      this.y = this.p.random(this.p.height);
-      this.vx = this.p.random(-0.5, 0.5);
-      this.vy = this.p.random(-0.5, 0.5);
-      this.radius = 3;
+      this.p = p;
+      this.pos = this.p.createVector(this.p.random(this.p.width), this.p.random(this.p.height));
+      this.vel = p5.Vector.random2D().mult(this.p.random(0.2, 0.5));
     }
-
     update() {
-      this.x += this.vx;
-      this.y += this.vy;
-
-      if (this.x < 0 || this.x > this.p.width) {
-        this.vx *= -1;
-      }
-      if (this.y < 0 || this.y > this.p.height) {
-        this.vy *= -1;
-      }
+      this.pos.add(this.vel);
+      if (this.pos.x < 0 || this.pos.x > this.p.width) { this.vel.x *= -1; }
+      if (this.pos.y < 0 || this.pos.y > this.p.height) { this.vel.y *= -1; }
     }
-
     display() {
       this.p.noStroke();
-      this.p.fill(150, 150, 150);
-      this.p.ellipse(this.x, this.y, this.radius * 2);
+      this.p.fill(200, 200, 200, 150); // Glowing spores
+      this.p.ellipse(this.pos.x, this.pos.y, 3);
     }
   }
-
 });
