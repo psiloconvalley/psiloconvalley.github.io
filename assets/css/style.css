@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #6366f1;
-    --secondary-color: #8b5cf6;
-    --text-color: #1f2937;
-    --text-light: #6b7280;
-    --background: #ffffff;
-    --border-color: #e5e7eb;
+    /* --- Bioluminescence Palette --- */
+    --primary-color: #00f5d4;   /* Glowing Teal */
+    --secondary-color: #00bbf9; /* Bright Cyan */
+    --text-color: #f0f0f5;      /* Off-White Text */
+    --text-light: #a0a0b0;     /* Muted Grey Text */
+    --background: #1a1a2e;     /* Deep Charcoal/Blue */
+    --border-color: #3a3a5e;    /* Muted Border */
     --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
-
 * {
     margin: 0;
     padding: 0;
