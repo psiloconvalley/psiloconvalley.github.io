@@ -17,7 +17,7 @@ Your support directly funds our research, data access costs, and server fees, al
 We believe in the power of decentralized systems and are grateful to accept support through the following channels.
 
 **Bitcoin (BTC):**
-`[Your BTC Address Here]`
+`3JyxMLQstryN1b68bDva8gmZhEgk8hxWay`
 
 **Ethereum (ETH) / L2s / EVM Chains:**
 `[Your ETH Address Here]`
