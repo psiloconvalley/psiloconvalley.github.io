@@ -28,11 +28,13 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. Exploring consciousness through innovation.</p>
+            <div class="footer-links">
+                <span>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</span> |
+                <a href="{{ '/support/' | relative_url }}">Support the Project</a>
+            </div>
+            <p>Exploring consciousness through innovation.</p>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-    <script src="{{ '/assets/js/mycelium.js' | relative_url }}"></script>
 </body>
 </html>
