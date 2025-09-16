@@ -18,15 +18,56 @@ permalink: /declassifier/
     </div>
     <div class="terminal-body">
       <div class="terminal-prompt">> Query:</div>
-      <div class="terminal-input" contenteditable="true" spellcheck="false" id="queryInput">Mycology and UFOs</div>
+      <div class="terminal-input" contenteditable="true" spellcheck="false" id="queryInput"></div>
     </div>
   </div>
-  <button class="declassify-btn" id="declassifyBtn">DECLASSIFY</button>
+  <button class="declassify-btn" id="declassifyBtn">DECLASSIFY (Coming Soon)</button>
+</div>
+
+<!-- NEW: Available Reports Section -->
+<div class="available-reports-container">
+  <div class="container narrow">
+    <h3>Available Briefings</h3>
+    <div class="report-buttons">
+      <button class="report-btn active" data-report="report-rv">Remote Viewing</button>
+      <button class="report-btn" data-report="report-ufo">Mycology & UFOs</button>
+    </div>
+  </div>
 </div>
 
 <div class="report-container" id="reportContainer">
-  <!-- The AI-generated report will be displayed here -->
-  <div class="report-content visible">
+  <!-- Report 1: Remote Viewing (Visible by default) -->
+  <div class="report-content visible" id="report-rv">
+    <h2 class="report-title">Briefing: Remote Viewing & Non-Local Consciousness</h2>
+    <div class="report-section">
+      <h3>1. Public Narrative</h3>
+      <p>Remote Viewing (RV) is the purported ability to acquire information about a distant or unseen target using paranormal means, often described as a form of clairvoyance or "psychic spying." The concept posits that the human mind can access information beyond the constraints of space and time, effectively tapping into a universal information field, akin to the esoteric concept of the "Akashic Record."</p>
+    </div>
+    <div class="report-section">
+      <h3>2. Key Figures & Groups</h3>
+      <ul>
+        <li><b>Stanford Research Institute (SRI):</b> The prestigious institution where the initial, scientifically-oriented RV experiments were conducted in the 1970s.</li>
+        <li><b>Russell Targ & Harold Puthoff:</b> The two physicists at SRI who led the research and attempted to apply rigorous scientific protocols to the phenomenon.</li>
+        <li><b>The Stargate Project:</b> The code name for the U.S. government's secret program (run by the CIA and DIA) that funded and attempted to operationalize RV for intelligence gathering from 1978 to 1995.</li>
+        <li><b>Ingo Swann & Joseph McMoneagle:</b> Two of the most famous and allegedly successful remote viewers who participated in the government programs. Swann is credited with coining the term "Remote Viewing."</li>
+      </ul>
+    </div>
+    <div class="report-section">
+      <h3>3. Core Evidence / Anecdotes</h3>
+      <p>The most compelling evidence comes from the declassified Stargate archives. Famous anecdotes include viewers allegedly identifying a secret Soviet nuclear submarine facility, locating a downed Russian bomber in Africa, and Ingo Swann's famous viewing of Jupiter, where he reportedly saw a ring around the planet months before NASA's Pioneer 10 probe officially confirmed it.</p>
+    </div>
+    <div class="report-section">
+      <h3>4. Skeptical Counterpoints</h3>
+      <p>The primary scientific criticism is the lack of repeatability under strict, controlled conditions. Skeptics argue that the successful results were a product of "retrofitting," where vague drawings and descriptions were matched to the target after the fact. Information leakage and unintentional cueing from the experimenters are also cited as major flaws. The CIA's own final report in 1995 concluded that the program was not a reliable source of intelligence, leading to its termination.</p>
+    </div>
+    <div class="report-section connection">
+      <h3>5. The Psiloconvalley Connection</h3>
+      <p>While RV remains scientifically unproven, the central premise—accessing a non-local information field—resonates deeply with modern physics and technology. The concept of <b>Quantum Entanglement</b> ("spooky action at a distance") proves that non-locality is a fundamental aspect of reality. The challenge of RV, separating a weak "signal" (correct information) from the "noise" (imagination), is a classic problem in <b>data science and signal processing.</b> Furthermore, the idea of a universal database is the ultimate metaphor for the internet and distributed ledgers. The question RV forces us to ask is a core Psiloconvalley theme: Is consciousness not just a generator of information, but also a <b>receiver?</b></p>
+    </div>
+  </div>
+
+  <!-- Report 2: Mycology & UFOs (Hidden by default) -->
+  <div class="report-content" id="report-ufo">
     <h2 class="report-title">Briefing: Mycology and UFOs</h2>
     <div class="report-section">
       <h3>1. Public Narrative</h3>
@@ -53,3 +94,32 @@ permalink: /declassifier/
     </div>
   </div>
 </div>
+
+<!-- NEW: The JavaScript to handle report switching -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const reportButtons = document.querySelectorAll('.report-btn');
+    const reportContents = document.querySelectorAll('.report-content');
+
+    reportButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Update active button
+        reportButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+
+        const targetReportId = this.getAttribute('data-report');
+
+        // Hide all reports
+        reportContents.forEach(content => {
+          content.classList.remove('visible');
+        });
+
+        // Show the target report
+        const targetReport = document.getElementById(targetReportId);
+        if (targetReport) {
+          targetReport.classList.add('visible');
+        }
+      });
+    });
+  });
+</script>
