@@ -277,16 +277,10 @@ body {
   z-index: 2;
   color: var(--text-color);
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.7); /* A slight white background to make text readable */
-  backdrop-filter: blur(4px); /* A cool blur effect */
+  background: rgba(26, 26, 46, 0.7); /* CHANGE THIS LINE - Dark, semi-transparent background */
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 12px;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  font-weight: 600;
-  margin: 0;
 }
 
 .hero-subtitle {
