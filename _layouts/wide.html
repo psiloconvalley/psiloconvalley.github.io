@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+            <nav class="site-nav">
+                {% for item in site.navigation %}
+                <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="current"{% endif %}>{{ item.title }}</a>
+                {% endfor %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content wide-layout">
+        {{ content }}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <span>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</span> |
+                <a href="{{ '/support/' | relative_url }}">Support the Project</a>
+            </div>
+            <p>Exploring consciousness through innovation.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="{{ '/assets/js/mycelium.js' | relative_url }}"></script>
+</body>
+</html>
