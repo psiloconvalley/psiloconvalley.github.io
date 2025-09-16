@@ -20,7 +20,7 @@ We believe in the power of decentralized systems and are grateful to accept supp
 `3JyxMLQstryN1b68bDva8gmZhEgk8hxWay`
 
 **Ethereum (ETH) / L2s / EVM Chains:**
-`[Your ETH Address Here]`
+`0x42e63152940bbF469f7d5F41f901563b9329c907`
 
 ---
 
