@@ -5,7 +5,7 @@ layout: default
 <div class="hero-section">
   <div id="mycelium-visual"></div>
   <div class="hero-content">
-    <h1>Psiloconvalley</h1>
+  <h1>TESTING 123</h1>
     <p class="hero-subtitle">Exploring the intersection of consciousness, technology, and innovation.</p>
   </div>
 </div>
