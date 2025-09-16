@@ -480,3 +480,101 @@ Finally, let's add the CSS that makes this new layout beautiful.
 .about-section p a:hover {
   border-bottom-color: var(--primary-color);
 }
+
+/* --- Declassifier Page Styles --- */
+.declassifier-hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+.declassifier-terminal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: #161625;
+}
+.declassifier-terminal {
+  width: 100%;
+  max-width: 720px;
+  background-color: #0d0d1a;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 245, 212, 0.1);
+  overflow: hidden;
+}
+.terminal-header {
+  background-color: var(--border-color);
+  padding: 0.5rem 1rem;
+  color: var(--text-light);
+  font-family: monospace;
+}
+.terminal-body {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+.terminal-input {
+  flex-grow: 1;
+  outline: none;
+  min-width: 10px;
+}
+.declassify-btn {
+  background: var(--gradient);
+  color: #1a1a2e;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: transform 0.2s;
+}
+.declassify-btn:hover {
+  transform: scale(1.05);
+}
+.report-container {
+  padding: 4rem 2rem;
+}
+.report-content {
+  max-width: 720px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.report-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.report-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+.report-section {
+  margin-bottom: 2rem;
+}
+.report-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.report-section.connection h3 {
+  color: #00f5d4; /* Teal for the special section */
+}
+.report-section p, .report-section ul {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-light);
+}
+.report-section ul { padding-left: 1.5rem; }
