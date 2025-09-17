@@ -4,122 +4,320 @@ title: Declassifier
 permalink: /declassifier/
 ---
 
+<!--
+  DECLASSIFIER: Terminal + Research Briefings
+  This page is self-contained. To upgrade to real AI, replace the runQuery() function.
+-->
+
+<style>
+  /* --- Terminal & Container Styles --- */
+  .declassifier-terminal-container {
+    max-width: 850px;
+    margin: 2rem auto 4rem auto;
+    font-family: 'Courier New', Monaco, monospace;
+  }
+  .declassifier-terminal {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+  .terminal-header {
+    background: #333;
+    padding: 0.5rem 1rem;
+    color: #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  .terminal-controls {
+    display: flex;
+    gap: 0.4rem;
+  }
+  .control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .control.close { background: #ff5f57; }
+  .control.minimize { background: #ffbd2e; }
+  .control.maximize { background: #28ca42; }
+
+  /* Terminal Body & Interaction */
+  .terminal-body {
+    padding: 1.5rem;
+    background: #222;
+    color: #e0e0e0;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .terminal-output {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .terminal-line {
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  .terminal-prompt-line {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 1rem;
+  }
+  .terminal-prompt-line span {
+    color: #4dabf7;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+  .terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    min-height: 1.5em;
+  }
+  .terminal-input:empty:before {
+    content: "Type a topic (e.g., microdosing) and press Enter...";
+    color: #666;
+  }
+
+  .declassify-btn {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.75rem 2rem;
+    background: #4dabf7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .declassify-btn:hover {
+    background: #3a8bc7;
+  }
+
+  /* --- Report/Briefing Styles --- */
+  .available-reports-container {
+    max-width: 850px;
+    margin: 2rem auto;
+  }
+  .report-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .report-btn {
+    padding: 0.5rem 1rem;
+    background: #eee;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .report-btn:hover {
+    background: #e0e0e0;
+  }
+  .report-btn.active {
+    background: #4dabf7;
+    color: white;
+    border-color: #4dabf7;
+  }
+
+  .report-container {
+    max-width: 850px;
+    margin: 0 auto 4rem auto;
+  }
+  .report-content {
+    display: none;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .report-content.visible {
+    display: block;
+  }
+
+  .report-title {
+    color: #222;
+    margin-top: 0;
+    border-bottom: 2px solid #4dabf7;
+    padding-bottom: 0.5rem;
+  }
+  .report-section {
+    margin-bottom: 2rem;
+  }
+  .report-section h3 {
+    color: #4dabf7;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+  .report-section p, .report-section ul {
+    line-height: 1.7;
+    color: #444;
+  }
+  .report-section ul {
+    padding-left: 1.2rem;
+  }
+  .report-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .connection {
+    background: #eef7ff;
+    padding: 1rem;
+    border-left: 4px solid #4dabf7;
+  }
+</style>
+
+<!-- Hero Section -->
 <div class="declassifier-hero">
-  <div class="container">
-    <h1>Psiloconvalley Declassifier</h1>
-    <p class="about-subtitle">Enter a query into the terminal to access structured intelligence briefings on fringe topics and their connection to mainstream science and technology.</p>
+  <div class="container narrow">
+    <h1>Psilocybin Declassifier</h1>
+    <p class="about-subtitle">Access structured briefings on the science of psilocybin, neuroplasticity, and fungal innovation.</p>
   </div>
 </div>
 
+<!-- Terminal Interface -->
 <div class="declassifier-terminal-container">
   <div class="declassifier-terminal">
     <div class="terminal-header">
-      <span>DECLASS_TERMINAL.EXE</span>
+      <span>PSILOCYBIN_TERMINAL.EXE</span>
+      <div class="terminal-controls">
+        <span class="control close"></span>
+        <span class="control minimize"></span>
+        <span class="control maximize"></span>
+      </div>
     </div>
     <div class="terminal-body">
-      <div class="terminal-prompt">> Query:</div>
-      <div class="terminal-input" contenteditable="true" spellcheck="false" id="queryInput"></div>
+      <div class="terminal-output" id="terminalOutput">
+        <div class="terminal-line">> SYSTEM INITIALIZED.</div>
+        <div class="terminal-line">> Welcome to the Research Declassifier.</div>
+      </div>
+      <div class="terminal-prompt-line">
+        <span>></span>
+        <div class="terminal-input" contenteditable="true" id="queryInput"></div>
+      </div>
     </div>
   </div>
-  <button class="declassify-btn" id="declassifyBtn">DECLASSIFY (Coming Soon)</button>
+  <button class="declassify-btn" id="declassifyBtn">Run Query</button>
 </div>
 
-<!-- NEW: Available Reports Section -->
+<!-- Quick Access Reports -->
 <div class="available-reports-container">
   <div class="container narrow">
-    <h3>Available Briefings</h3>
+    <h3>Featured Briefings</h3>
     <div class="report-buttons">
-      <button class="report-btn active" data-report="report-rv">Remote Viewing</button>
-      <button class="report-btn" data-report="report-ufo">Mycology & UFOs</button>
+      <button class="report-btn active" data-report="report-depression">Depression</button>
+      <button class="report-btn" data-report="report-neuroplasticity">Neuroplasticity</button>
+      <button class="report-btn" data-report="report-materials">Mycelium Tech</button>
     </div>
   </div>
 </div>
 
+<!-- Report Content Area -->
 <div class="report-container" id="reportContainer">
-  <!-- Report 1: Remote Viewing (Visible by default) -->
-  <div class="report-content visible" id="report-rv">
-    <h2 class="report-title">Briefing: Remote Viewing & Non-Local Consciousness</h2>
+
+  <!-- Report 1: Depression -->
+  <div class="report-content visible" id="report-depression">
+    <h2 class="report-title">Briefing: Psilocybin for Treatment-Resistant Depression (TRD)</h2>
+
     <div class="report-section">
-      <h3>1. Public Narrative</h3>
-      <p>Remote Viewing (RV) is the purported ability to acquire information about a distant or unseen target using paranormal means, often described as a form of clairvoyance or "psychic spying." The concept posits that the human mind can access information beyond the constraints of space and time, effectively tapping into a universal information field, akin to the esoteric concept of the "Akashic Record."</p>
+      <h3>1. Executive Summary</h3>
+      <p>Clinical trials demonstrate that psilocybin-assisted therapy produces rapid and enduring antidepressant effects. In contrast to daily SSRIs, one or two high-dose sessions can lead to remission lasting months by facilitating profound psychological shifts and "rewiring" rigid thought patterns.</p>
     </div>
+
     <div class="report-section">
-      <h3>2. Key Figures & Groups</h3>
+      <h3>2. Key Evidence</h3>
       <ul>
-        <li><b>Stanford Research Institute (SRI):</b> The prestigious institution where the initial, scientifically-oriented RV experiments were conducted in the 1970s.</li>
-        <li><b>Russell Targ & Harold Puthoff:</b> The two physicists at SRI who led the research and attempted to apply rigorous scientific protocols to the phenomenon.</li>
-        <li><b>The Stargate Project:</b> The code name for the U.S. government's secret program (run by the CIA and DIA) that funded and attempted to operationalize RV for intelligence gathering from 1978 to 1995.</li>
-        <li><b>Ingo Swann & Joseph McMoneagle:</b> Two of the most famous and allegedly successful remote viewers who participated in the government programs. Swann is credited with coining the term "Remote Viewing."</li>
+        <li><b>New England Journal of Medicine (2022):</b> COMPASS Pathways Phase IIb trial found a single 25mg dose significantly reduced depression scores at 3 weeks compared to placebo.</li>
+        <li><b>JAMA Psychiatry (2020):</b> NYU/Hopkins study showed psilocybin rapidly reduced depression and anxiety in cancer patients, with effects sustained for over 4 years in follow-ups.</li>
       </ul>
     </div>
-    <div class="report-section">
-      <h3>3. Core Evidence / Anecdotes</h3>
-      <p>The most compelling evidence comes from the declassified Stargate archives. Famous anecdotes include viewers allegedly identifying a secret Soviet nuclear submarine facility, locating a downed Russian bomber in Africa, and Ingo Swann's famous viewing of Jupiter, where he reportedly saw a ring around the planet months before NASA's Pioneer 10 probe officially confirmed it.</p>
-    </div>
-    <div class="report-section">
-      <h3>4. Skeptical Counterpoints</h3>
-      <p>The primary scientific criticism is the lack of repeatability under strict, controlled conditions. Skeptics argue that the successful results were a product of "retrofitting," where vague drawings and descriptions were matched to the target after the fact. Information leakage and unintentional cueing from the experimenters are also cited as major flaws. The CIA's own final report in 1995 concluded that the program was not a reliable source of intelligence, leading to its termination.</p>
-    </div>
+
     <div class="report-section connection">
-      <h3>5. The Psiloconvalley Connection</h3>
-      <p>While RV remains scientifically unproven, the central premise—accessing a non-local information field—resonates deeply with modern physics and technology. The concept of <b>Quantum Entanglement</b> ("spooky action at a distance") proves that non-locality is a fundamental aspect of reality. The challenge of RV, separating a weak "signal" (correct information) from the "noise" (imagination), is a classic problem in <b>data science and signal processing.</b> Furthermore, the idea of a universal database is the ultimate metaphor for the internet and distributed ledgers. The question RV forces us to ask is a core Psiloconvalley theme: Is consciousness not just a generator of information, but also a <b>receiver?</b></p>
+      <h3>3. The Psiloconvalley Signal</h3>
+      <p>This research shifts the paradigm from "managing symptoms" to "treating root causes." It signals a future where mental health care is precise, short-term, and curative, driven by insights into brain plasticity.</p>
     </div>
   </div>
 
-  <!-- Report 2: Mycology & UFOs (Hidden by default) -->
-  <div class="report-content" id="report-ufo">
-    <h2 class="report-title">Briefing: Mycology and UFOs</h2>
+  <!-- Report 2: Neuroplasticity -->
+  <div class="report-content" id="report-neuroplasticity">
+    <h2 class="report-title">Briefing: Psilocybin & Neuroplasticity</h2>
+
     <div class="report-section">
-      <h3>1. Public Narrative</h3>
-      <p>The core claim is that fungi, specifically their spores and mycelial networks, are not native to Earth. This theory, known as "Panspermia," suggests that mushroom spores are extraterrestrial organisms that travel through space and seed life on habitable planets. Proponents like Terence McKenna have theorized that this makes fungi a form of alien intelligence.</p>
+      <h3>1. Executive Summary</h3>
+      <p>Psilocybin acts as a catalyst for <b>neuroplasticity</b>—the brain's ability to reorganize itself by forming new neural connections. This effect may explain the "reset" feeling and long-term benefits reported by users.</p>
     </div>
+
     <div class="report-section">
-      <h3>2. Key Figures & Groups</h3>
+      <h3>2. Key Evidence</h3>
       <ul>
-        <li><b>Terence McKenna:</b> Ethnobotanist and mystic who popularized the "Stoned Ape" theory and the idea of psilocybin mushrooms as a form of alien intelligence.</li>
-        <li><b>Panspermia Theorists:</b> Scientists and thinkers (e.g., Francis Crick, Fred Hoyle) who have explored the general hypothesis that life on Earth originated from microorganisms from outer space.</li>
+        <li><b>Cell Reports (2018) - "The Psychedelics as Plasticity Promoters" (Ly et al.):</b> Showed that psilocybin and other psychedelics increase dendritic spine density (new connections between neurons) in the prefrontal cortex of mice within 24 hours.</li>
+        <li><b>Human Brain Mapping (2022):</b> Scans show increased global connectivity and a temporary "loosening" of rigid brain networks under psilocybin.</li>
       </ul>
     </div>
-    <div class="report-section">
-      <h3>3. Core Evidence / Anecdotes</h3>
-      <p>The "evidence" is largely theoretical and anecdotal. It includes the incredible resilience of fungal spores to extreme temperatures and radiation (conditions found in space), the unique tryptamine chemistry of psilocybin which differs from other terrestrial neurochemicals, and the networked, "intelligent" behavior of mycelium which is cited as a model for alien communication networks.</p>
-    </div>
-    <div class="report-section">
-      <h3>4. Skeptical Counterpoints</h3>
-      <p>There is no direct physical evidence to support the extraterrestrial origin of fungi. DNA analysis shows fungi are more closely related to animals than plants, fitting squarely within the terrestrial evolutionary tree. The resilience of spores is an evolutionary advantage on Earth, not necessarily proof of space travel. The claims of "alien intelligence" are unfalsifiable and based on subjective psychedelic experiences.</p>
-    </div>
+
     <div class="report-section connection">
-      <h3>5. The Psiloconvalley Connection</h3>
-      <p>While the "alien mushroom" theory is speculative, it serves as a powerful metaphor for decentralized systems. The study of mycelial networks is directly influencing fields like <b>distributed computing, network theory, and the design of resilient, self-healing systems (see DARPA's ELM program).</b> The concept of panspermia also forces us to consider the ultimate limits of biology and the potential for life to exist in forms we can barely imagine, a key driver for the field of <b>astrobiology.</b></p>
+      <h3>3. The Psiloconvalley Signal</h3>
+      <p>If the brain is hardware, psilocybin is an update patch. The ability to intentionally promote learning and adaptation is the ultimate biohack, with implications for learning, creativity, and recovery from injury.</p>
     </div>
   </div>
+
+  <!-- Report 3: Mycelium Materials -->
+  <div class="report-content" id="report-materials">
+    <h2 class="report-title">Briefing: Mycelium as Sustainable Technology</h2>
+
+    <div class="report-section">
+      <h3>1. Executive Summary</h3>
+      <p>Mycelium (the root structure of fungi) is being harnessed to "grow" industrial materials. By feeding agricultural waste to mushroom strains, companies create biodegradable alternatives to plastic foam, leather, and building materials.</p>
+    </div>
+
+    <div class="report-section">
+      <h3>2. Key Applications</h3>
+      <ul>
+        <li><b>Ecovative Design:</b> Produces "MycoComposite" packaging (used by Dell and IKEA) that is home-compostable.</li>
+        <li><b>MycoWorks:</b> Creates "Reishi," a premium, sustainable leather alternative adopted by luxury brands like Hermès.</li>
+        <li><b>Construction:</b> Mycelium bricks are naturally fire-retardant and insulating.</li>
+      </ul>
+    </div>
+
+    <div class="report-section connection">
+      <h3>3. The Psiloconvalley Signal</h3>
+      <p>This is decentralized, circular manufacturing. It demonstrates how biological intelligence can replace extractive industrial processes, merging "tech" with the wisdom of natural systems.</p>
+    </div>
+  </div>
+
 </div>
 
-<!-- NEW: The JavaScript to handle report switching -->
+<!-- JavaScript for Interactivity -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    const terminalInput = document.getElementById('queryInput');
+    const terminalOutput = document.getElementById('terminalOutput');
+    const runBtn = document.getElementById('declassifyBtn');
     const reportButtons = document.querySelectorAll('.report-btn');
     const reportContents = document.querySelectorAll('.report-content');
 
+    // --- 1. Handle Report Switching (Buttons) ---
     reportButtons.forEach(button => {
       button.addEventListener('click', function() {
-        // Update active button
+        // Deactivate all buttons, activate the clicked one
         reportButtons.forEach(btn => btn.classList.remove('active'));
         this.classList.add('active');
 
+        // Hide all reports, show the matching one
         const targetReportId = this.getAttribute('data-report');
-
-        // Hide all reports
-        reportContents.forEach(content => {
-          content.classList.remove('visible');
-        });
-
-        // Show the target report
-        const targetReport = document.getElementById(targetReportId);
-        if (targetReport) {
-          targetReport.classList.add('visible');
-        }
-      });
-    });
-  });
-</script>
+        
