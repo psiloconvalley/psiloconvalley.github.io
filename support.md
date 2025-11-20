@@ -1,12 +1,20 @@
-# PSILOCON VALLEY PASSPORT · CHARTER DROP · 420 ONLY
+# Support Psiloconvalley
 
-$1,337 one-time payment (BTC or ETH)  
-Lifetime access to every archive drop, live map, physical black card, and everything we will ever ship.
+We are an independent research project mapping the intersection of psychedelics, technology, and high-performance culture.
 
-First 420 payments received get the charter passport.  
-After 420 are sold, this tier closes forever and price becomes $2,500 permanently.
+Everything on the site will always remain free.
 
-Pay exactly $1,337 worth to either address below:
+If you’ve personally gotten extreme value from the work here and want to guarantee it keeps going (and get everything we’ll ever ship in the future), there is currently one lifetime supporter tier available:
+
+**Charter Passport — 420 spots only**  
+$1,337 one-time (BTC or ETH)  
+Includes:  
+- Lifetime access to every future Archive Drop (the redacted PDFs)  
+- The live sourcing / retreat / clinic map as it updates  
+- Physical black metal card (shipped unmarked)  
+- Everything else we ever release
+
+Payable to the addresses below. First 420 confirmed payments lock in at this price. When they’re gone, the tier closes forever.
 
 **Bitcoin (BTC):**  
 `3JyxMLQstryN1b68bDva8gmZhEgk8hxWay`
@@ -14,14 +22,6 @@ Pay exactly $1,337 worth to either address below:
 **Ethereum (ETH / USDC / USDT / L2s):**  
 `0x42e63152940bbF469f7d5F41f901563b9329c907`
 
-Current counter: **0 / 420** sold (updates live)
+Current: 0 / 420 claimed
 
-No refunds · No questions · First come, first served
-
----
-
-Psiloconvalley is an independent, self-funded project dedicated to exploring the future of consciousness and technology. Our mission is to provide high-quality, data-driven insights and build open-source tools for this emerging field.
-
-Your support directly funds our research, data access costs, and server fees, allowing us to keep the primary tools and content free and accessible to everyone. If you find value in this project, please consider contributing.
-
-Thank you for being a part of this journey.
+Thank you for being here.
