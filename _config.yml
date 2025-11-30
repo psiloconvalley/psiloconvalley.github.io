@@ -12,6 +12,7 @@ footer:
   license: ""
 
 # The base URL of your site
+baseurl: ""
 # The Site Configuration
 
 # Import the theme
