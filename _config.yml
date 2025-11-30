@@ -1,3 +1,17 @@
+title: "psiloconvalley"
+tagline: "Tools, consciousness, and code"
+lang: "en"
+timezone: "UTC"
+
+# Footer metadata
+copyright: "psiloconvalley"
+license: ""
+
+footer:
+  copyright: "psiloconvalley"
+  license: ""
+
+# The base URL of your site
 # The Site Configuration
 
 # Import the theme
